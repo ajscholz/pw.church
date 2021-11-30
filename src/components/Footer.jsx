@@ -1,7 +1,7 @@
 import React from "react"
 import { footerLinks as navigation } from "../data/links"
-import Button from "./src/Button"
-import Typography from "./src/Typography"
+import Button from "./Button"
+import Typography from "./Typography"
 
 const Footer = () => {
   return (

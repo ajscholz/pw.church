@@ -7,12 +7,12 @@ const Layout = ({ seo, children, pageContext }) => {
   const hideNav = pageContext.layout === "no-nav"
 
   return (
-    <React.Fragment>
+    <>
       <Seo title={seo.title} description={seo.description} image={seo.image} />
       {!hideNav && <header>Header</header>}
       <main>{children}</main>
       {!hideNav && <Footer />}
-    </React.Fragment>
+    </>
   )
 }
 
