@@ -1,3 +1,5 @@
+// TODO: Verify seo is working in production – it's not showing up how I expect in development
+
 import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
