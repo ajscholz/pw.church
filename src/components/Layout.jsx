@@ -1,14 +1,17 @@
 import React from "react"
 import PropTypes from "prop-types"
 import Seo from "./Seo"
+import Footer from "./Footer"
 
-const Layout = ({ seo, children }) => {
+const Layout = ({ seo, children, pageContext }) => {
+  const hideNav = pageContext.layout === "no-nav"
+
   return (
     <React.Fragment>
       <Seo title={seo.title} description={seo.description} image={seo.image} />
-      <header>Header</header>
+      {!hideNav && <header>Header</header>}
       <main>{children}</main>
-      <footer>footer</footer>
+      {!hideNav && <Footer />}
     </React.Fragment>
   )
 }
