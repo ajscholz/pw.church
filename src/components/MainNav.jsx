@@ -5,6 +5,7 @@ import { Popover, Transition } from "@headlessui/react"
 import { MenuIcon, XIcon } from "@heroicons/react/outline"
 
 import { mainLinks } from "../data/links"
+import Link from "./Link"
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ")
@@ -19,14 +20,14 @@ const MainNav = ({ props }) => {
         <div className="flex justify-between items-center py-6 md:space-x-10">
           {/* LOGO */}
           <div className="flex justify-start lg:w-0 lg:flex-1">
-            <a href="#">
+            <Link href="/">
               <span className="sr-only">Workflow</span>
               <img
                 className="h-8 w-auto sm:h-10"
                 src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
                 alt=""
               />
-            </a>
+            </Link>
           </div>
 
           {/* OPEN BUTTON */}
@@ -40,7 +41,7 @@ const MainNav = ({ props }) => {
           {/* MAIN NAV */}
           <nav className="hidden md:flex justify-between items-center space-x-10 ml-auto">
             {mainLinks.map((link, i) => (
-              <a
+              <Link
                 key={link.name}
                 href={link.href}
                 className={classNames(
@@ -51,7 +52,7 @@ const MainNav = ({ props }) => {
                 )}
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
           </nav>
         </div>
@@ -83,7 +84,7 @@ const MainNav = ({ props }) => {
               <div className="mt-10 mb-6">
                 <nav className="grid gap-y-8">
                   {mainLinks.map((link, i) => (
-                    <a
+                    <Link
                       key={link.name}
                       href={link.href}
                       className={classNames(
@@ -94,23 +95,8 @@ const MainNav = ({ props }) => {
                       )}
                     >
                       {link.name}
-                    </a>
+                    </Link>
                   ))}
-                  {/* {features.map(item => (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
-                    >
-                      <item.icon
-                        className="flex-shrink-0 h-6 w-6 text-green-600"
-                        aria-hidden="true"
-                      />
-                      <span className="ml-3 text-base font-medium text-gray-900">
-                        {item.name}
-                      </span>
-                    </a>
-                  ))} */}
                 </nav>
               </div>
             </div>

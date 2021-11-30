@@ -3,16 +3,16 @@ import React from "react"
 export const mainLinks = [
   {
     name: "I'm New",
-    href: "#",
+    href: "/new",
   },
-  { name: "Watch", href: "#" },
+  { name: "Watch", href: "/watch" },
   {
     name: "Give",
-    href: "#",
+    href: "/give",
   },
   {
     name: "Join Us Sunday",
-    href: "#",
+    href: "/sunday",
   },
 ]
 
