@@ -8,14 +8,15 @@ const Layout = ({ seo, children, pageContext }) => {
   const hideNav = pageContext.layout === "no-nav"
 
   return (
-    <>
+    // <div className="flex flex-col min-h-screen bg-gray-50">
+    <div>
       <Seo title={seo.title} description={seo.description} image={seo.image} />
-      <div className="relative bg-gray-50">
+      <div className="relative">
         {!hideNav && <MainNav>Header</MainNav>}
         <main className="lg:relative">{children}</main>
       </div>
-      {!hideNav && <Footer />}
-    </>
+      {!hideNav && <Footer className="mt-auto" />}
+    </div>
   )
 }
 
