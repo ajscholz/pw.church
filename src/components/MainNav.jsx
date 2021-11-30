@@ -2,108 +2,21 @@ import React, { Fragment } from "react"
 import PropTypes from "prop-types"
 
 import { Popover, Transition } from "@headlessui/react"
-import {
-  BookmarkAltIcon,
-  CalendarIcon,
-  ChartBarIcon,
-  CursorClickIcon,
-  MenuIcon,
-  PhoneIcon,
-  PlayIcon,
-  RefreshIcon,
-  ShieldCheckIcon,
-  SupportIcon,
-  ViewGridIcon,
-  XIcon,
-} from "@heroicons/react/outline"
-import { ChevronDownIcon } from "@heroicons/react/solid"
+import { MenuIcon, XIcon } from "@heroicons/react/outline"
 
-const features = [
-  {
-    name: "Analytics",
-    href: "#",
-    description:
-      "Get a better understanding of where your traffic is coming from.",
-    icon: ChartBarIcon,
-  },
-  {
-    name: "Engagement",
-    href: "#",
-    description: "Speak directly to your customers in a more meaningful way.",
-    icon: CursorClickIcon,
-  },
-  {
-    name: "Security",
-    href: "#",
-    description: "Your customers' data will be safe and secure.",
-    icon: ShieldCheckIcon,
-  },
-  {
-    name: "Integrations",
-    href: "#",
-    description: "Connect with third-party tools that you're already using.",
-    icon: ViewGridIcon,
-  },
-  {
-    name: "Automations",
-    href: "#",
-    description:
-      "Build strategic funnels that will drive your customers to convert",
-    icon: RefreshIcon,
-  },
-]
-const callsToAction = [
-  { name: "Watch Demo", href: "#", icon: PlayIcon },
-  { name: "Contact Sales", href: "#", icon: PhoneIcon },
-]
-const resources = [
-  {
-    name: "Help Center",
-    description:
-      "Get all of your questions answered in our forums or contact support.",
-    href: "#",
-    icon: SupportIcon,
-  },
-  {
-    name: "Guides",
-    description:
-      "Learn how to maximize our platform to get the most out of it.",
-    href: "#",
-    icon: BookmarkAltIcon,
-  },
-  {
-    name: "Events",
-    description:
-      "See what meet-ups and other events we might be planning near you.",
-    href: "#",
-    icon: CalendarIcon,
-  },
-  {
-    name: "Security",
-    description: "Understand how we take your privacy seriously.",
-    href: "#",
-    icon: ShieldCheckIcon,
-  },
-]
-const recentPosts = [
-  { id: 1, name: "Boost your conversion rate", href: "#" },
-  {
-    id: 2,
-    name: "How to use search engine optimization to drive traffic to your site",
-    href: "#",
-  },
-  { id: 3, name: "Improve your customer experience", href: "#" },
-]
+import { mainLinks } from "../data/links"
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ")
 }
 
+const navClasses = "text-base text-white font-bold uppercase tracking-wide"
+
 const MainNav = ({ props }) => {
   return (
-    <Popover className="absolute top-0 left-0 right-0 z-10 bg-white shadow">
+    <Popover className="absolute top-0 left-0 right-0 z-10 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="flex justify-between items-center py-6 md:justify-start md:space-x-10">
+        <div className="flex justify-between items-center py-6 md:space-x-10">
           {/* LOGO */}
           <div className="flex justify-start lg:w-0 lg:flex-1">
             <a href="#">
@@ -118,33 +31,29 @@ const MainNav = ({ props }) => {
 
           {/* OPEN BUTTON */}
           <div className="-mr-2 -my-2 md:hidden">
-            <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500">
+            <Popover.Button className="bg-transparent rounded-md p-2 inline-flex items-center justify-center text-white hover:text-gray-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500">
               <span className="sr-only">Open menu</span>
               <MenuIcon className="h-6 w-6" aria-hidden="true" />
             </Popover.Button>
           </div>
 
           {/* MAIN NAV */}
-          <nav className="hidden md:flex space-x-10 ml-auto">
-            <a
-              href="#"
-              className="text-base font-medium text-gray-500 hover:text-gray-900"
-            >
-              Pricing
-            </a>
-            <a
-              href="#"
-              className="text-base font-medium text-gray-500 hover:text-gray-900"
-            >
-              Docs
-            </a>
+          <nav className="hidden md:flex justify-between items-center space-x-10 ml-auto">
+            {mainLinks.map((link, i) => (
+              <a
+                key={link.name}
+                href={link.href}
+                className={classNames(
+                  navClasses,
+                  mainLinks.length - 1 === i
+                    ? "hidden md:block ml-8 whitespace-nowrap items-center justify-center px-8 py-2 border-2 border-white rounded-full hover:bg-green-500 hover:border-green-500"
+                    : ""
+                )}
+              >
+                {link.name}
+              </a>
+            ))}
           </nav>
-          <a
-            href="#"
-            className="hidden md:block ml-8 whitespace-nowrap items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-green-600 hover:bg-green-700"
-          >
-            Sign up
-          </a>
         </div>
       </div>
 
@@ -163,14 +72,7 @@ const MainNav = ({ props }) => {
         >
           <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
             <div className="pt-5 pb-6 px-5">
-              <div className="flex items-center justify-between">
-                <div>
-                  <img
-                    className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                    alt="Workflow"
-                  />
-                </div>
+              <div className="flex items-center justify-end">
                 <div className="-mr-2">
                   <Popover.Button className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500">
                     <span className="sr-only">Close menu</span>
@@ -178,9 +80,23 @@ const MainNav = ({ props }) => {
                   </Popover.Button>
                 </div>
               </div>
-              <div className="mt-6">
+              <div className="mt-10 mb-6">
                 <nav className="grid gap-y-8">
-                  {features.map(item => (
+                  {mainLinks.map((link, i) => (
+                    <a
+                      key={link.name}
+                      href={link.href}
+                      className={classNames(
+                        "mx-auto text-base text-center font-bold text-gray-700",
+                        mainLinks.length - 1 === i
+                          ? "whitespace-nowrap items-center justify-center px-8 py-2 border-2 border-green-500 rounded-full hover:bg-green-500 hover:border-green-500"
+                          : ""
+                      )}
+                    >
+                      {link.name}
+                    </a>
+                  ))}
+                  {/* {features.map(item => (
                     <a
                       key={item.name}
                       href={item.href}
@@ -194,48 +110,8 @@ const MainNav = ({ props }) => {
                         {item.name}
                       </span>
                     </a>
-                  ))}
+                  ))} */}
                 </nav>
-              </div>
-            </div>
-            <div className="py-6 px-5 space-y-6">
-              <div className="grid grid-cols-2 gap-y-4 gap-x-8">
-                <a
-                  href="#"
-                  className="text-base font-medium text-gray-900 hover:text-gray-700"
-                >
-                  Pricing
-                </a>
-
-                <a
-                  href="#"
-                  className="text-base font-medium text-gray-900 hover:text-gray-700"
-                >
-                  Docs
-                </a>
-                {resources.map(item => (
-                  <a
-                    key={item.name}
-                    href={item.href}
-                    className="text-base font-medium text-gray-900 hover:text-gray-700"
-                  >
-                    {item.name}
-                  </a>
-                ))}
-              </div>
-              <div>
-                <a
-                  href="#"
-                  className="w-full flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-green-600 hover:bg-green-700"
-                >
-                  Sign up
-                </a>
-                <p className="mt-6 text-center text-base font-medium text-gray-500">
-                  Existing customer?
-                  <a href="#" className="text-green-600 hover:text-green-500">
-                    Sign in
-                  </a>
-                </p>
               </div>
             </div>
           </div>

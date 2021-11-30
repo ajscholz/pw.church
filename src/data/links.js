@@ -1,5 +1,21 @@
 import React from "react"
 
+export const mainLinks = [
+  {
+    name: "I'm New",
+    href: "#",
+  },
+  { name: "Watch", href: "#" },
+  {
+    name: "Give",
+    href: "#",
+  },
+  {
+    name: "Join Us Sunday",
+    href: "#",
+  },
+]
+
 export const footerLinks = {
   solutions: [
     { name: "Marketing", href: "#" },
