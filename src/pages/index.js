@@ -1,6 +1,5 @@
 import * as React from "react"
-import Layout from "../components/Layout"
 
-const IndexPage = () => <Layout>index</Layout>
+const IndexPage = () => <React.Fragment>index</React.Fragment>
 
 export default IndexPage

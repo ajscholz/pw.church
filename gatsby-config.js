@@ -7,10 +7,12 @@ const CONTENTFUL_HOST = process.env.CONTENTFUL_HOST
 
 module.exports = {
   siteMetadata: {
-    title: `Pathway Community Church`,
+    title: `Welcome To Pathway`,
+    titleTemplate: "%s · Pathway Community Church, Marietta, Ohio",
     description: `A different kind of church in Marietta.`,
-    author: `@pw-church`,
-    siteUrl: `https://pw.church`,
+    twitterUsername: `@pw-church`,
+    url: `https://pw.church`,
+    image: "/static/icon.png",
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -40,20 +42,20 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    // {
-    //   resolve: `gatsby-plugin-manifest`,
-    //   options: {
-    //     name: `pathway church`,
-    //     short_name: `pw church`,
-    //     start_url: `/`,
-    //     background_color: `#663399`,
-    //     // This will impact how browsers show your PWA/website
-    //     // https://css-tricks.com/meta-theme-color-and-trickery/
-    //     // theme_color: `#663399`,
-    //     display: `minimal-ui`,
-    //     icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `pathway church`,
+        short_name: `pw church`,
+        start_url: `/`,
+        background_color: `#94cc4c`,
+        // This will impact how browsers show your PWA/website
+        // https://css-tricks.com/meta-theme-color-and-trickery/
+        // theme_color: `#94cc4c`,
+        display: `minimal-ui`,
+        icon: `./src/images/icon.png`, // This path is relative to the root of the site.
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
