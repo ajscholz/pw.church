@@ -5,6 +5,8 @@
   "version": "0.1.0",
   "author": "Andrew Scholz <andrew@citynorth.church>",
   "dependencies": {
+    "@headlessui/react": "^1.4.2",
+    "@heroicons/react": "^1.0.5",
     "gatsby": "^4.2.0",
     "gatsby-plugin-gatsby-cloud": "^4.2.0",
     "gatsby-plugin-image": "^2.2.0",
@@ -21,7 +23,11 @@
     "react-helmet": "^6.1.0"
   },
   "devDependencies": {
-    "prettier": "^2.4.1"
+    "autoprefixer": "^10.4.0",
+    "gatsby-plugin-postcss": "^5.2.0",
+    "postcss": "^8.4.4",
+    "prettier": "^2.4.1",
+    "tailwindcss": "^2.2.19"
   },
   "keywords": [
     "gatsby"
