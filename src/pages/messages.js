@@ -1,5 +1,3 @@
-//  TODO: Style for larger screen sizes, get images
-
 import React, { useState } from "react"
 import { graphql } from "gatsby"
 import ReactPlayer from "react-player"
@@ -24,11 +22,11 @@ const MessagesPage = ({ data }) => {
             Sunday Messages
           </h1>
           {currentMessages.map(({ message }) => (
-            <div>
-              <div
-                key={message.contentful_id}
-                className="relative pt-16/9 border-4 border-gray-800 rounded-xl"
-              >
+            <div
+              key={message.contentful_id}
+              className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6"
+            >
+              <div className="relative pt-16/9 border-4 border-gray-800 rounded-xl">
                 <ReactPlayer
                   url={message.videoLink}
                   light={true}
@@ -41,7 +39,7 @@ const MessagesPage = ({ data }) => {
                 <div className="absolute inset-0 flex bg-gray-800 bg-opacity-10" />
               </div>
               <div>
-                <h2 className="mt-1 text-2xl text-gray-800 font-bold uppercase">
+                <h2 className="text-2xl text-gray-800 font-bold uppercase">
                   {message.title}
                 </h2>
                 <h3 className="mt-1 text-lg text-gray-400 font-bold">
