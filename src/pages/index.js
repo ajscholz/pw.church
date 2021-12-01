@@ -187,7 +187,7 @@ const Grid = ({ children, ...rest }) => (
 )
 
 const Card = ({ children, image, primaryText, secondaryText, ...rest }) => (
-  <div className="w-full pt-4/5 rounded-lg overflow-hidden relative" {...rest}>
+  <div className="w-full pt-4/5 rounded-xl overflow-hidden relative" {...rest}>
     <div className="absolute inset-0 flex">
       <GatsbyImage
         image={image}
