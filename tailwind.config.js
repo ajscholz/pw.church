@@ -25,10 +25,21 @@ module.exports = {
       fontFamily: {
         sans: ["Source Sans Pro", ...defaultTheme.fontFamily.sans],
       },
+      spacing: {
+        full: "100%",
+        "16/9": "56.25%",
+        "16/10": "62.5%",
+        "3/4": "75%",
+        "4/5": "80%",
+      },
     },
   },
   variants: {
     extend: {},
   },
-  plugins: [require("@tailwindcss/forms")],
+  plugins: [
+    require("@tailwindcss/forms"),
+    require("@tailwindcss/aspect-ratio"),
+    require("@tailwindcss/line-clamp"),
+  ],
 }
