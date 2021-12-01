@@ -95,7 +95,7 @@ const IndexPage = ({ data }) => {
           {/* SECTION 4 */}
           <section
             key={filteredSections[2].contentful_id}
-            className="py-16 px-12"
+            className="pt-16 px-4 md:pt-16 md:px-12"
           >
             <H1>{filteredSections[2].title}</H1>
             <div className="mt-4 grid gap-6 grid-cols-1 md:grid-cols-2 md:mt-8">
@@ -166,7 +166,7 @@ export const data = graphql`
 `
 
 const Section = ({ children, ...rest }) => (
-  <section className="pt-8 px-4 -mb-6 md:pt-16 md:px-12" {...rest}>
+  <section className="pt-16 px-4 -mb-6 md:pt-16 md:px-12" {...rest}>
     {children}
   </section>
 )
