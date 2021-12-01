@@ -1,10 +1,12 @@
-import React from "react"
+import React, { useState } from "react"
 import PropTypes from "prop-types"
 import Seo from "./Seo"
 import Footer from "./Footer"
 import MainNav from "./MainNav"
+import AnnouncementBanner from "./AnnouncementBanner"
 
 const Layout = ({ seo, children, pageContext }) => {
+  const [show, setShow] = useState(false)
   const hideNav = pageContext.layout === "no-nav"
 
   return (
@@ -12,10 +14,11 @@ const Layout = ({ seo, children, pageContext }) => {
     <div>
       <Seo title={seo.title} description={seo.description} image={seo.image} />
       <div className="relative">
-        {!hideNav && <MainNav>Header</MainNav>}
+        <MainNav hide={hideNav}>Header</MainNav>
         <main className="lg:relative">{children}</main>
       </div>
-      {!hideNav && <Footer className="mt-auto" />}
+      <Footer hide={hideNav} pad={show} />
+      <AnnouncementBanner show={show} setShow={setShow} />
     </div>
   )
 }

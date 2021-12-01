@@ -15,7 +15,7 @@ function classNames(...classes) {
 
 const navClasses = "text-base text-white font-bold uppercase tracking-wide"
 
-const MainNav = ({ props }) => {
+const MainNav = ({ hide }) => {
   const data = useStaticQuery(graphql`
     query churchInfoQuery {
       logo: contentfulChurchInformation {
@@ -28,7 +28,7 @@ const MainNav = ({ props }) => {
 
   const logo = getImage(data.logo)
 
-  return (
+  return hide ? null : (
     <Popover className="absolute top-0 left-0 right-0 z-10 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex justify-between items-center py-6 md:space-x-10">
@@ -121,6 +121,8 @@ const MainNav = ({ props }) => {
   )
 }
 
-MainNav.propTypes = {}
+MainNav.propTypes = {
+  hide: PropTypes.bool.isRequired,
+}
 
 export default MainNav

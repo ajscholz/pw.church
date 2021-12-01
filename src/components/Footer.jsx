@@ -1,48 +1,19 @@
 import React from "react"
+import PropTypes from "prop-types"
 import { footerLinks as navigation } from "../data/links"
-import Button from "./Button"
 import Typography from "./Typography"
 
-/*
-
-
-Bottom of the Page – FOOTER
-Location
-Address & Phone
-Services
-Times
-Pathway Community Church
-Sundays
-Church Overview
-Mission Statement
-Shortened statement of faith
-Governmental Structure video
-Contact Us
-If you have questions or comments we’re here to help
-Dropdown of all areas of ministry
-Email would go to all ministry appropriate areas
-Get Involved
-Connect Groups
-Join the Dream Team
-Care and Counseling
-Community Outreach
-Resources
-Help Me Understand
-Meyers Briggs
-Spiritual Gifts
-Enneagram
-
-
-*/
-
-const Footer = () => {
-  return (
+const Footer = ({ pad, hide }) => {
+  return hide ? null : (
     <>
       <div
         aria-hidden="true"
         className="mx-8 mt-16 border-t-2 border-gray-400 md:flex md:items-center md:justify-between"
       />
-      <footer className="bg-white" aria-labelledby="footer-heading">
+      <footer
+        className={`bg-white${pad && " mb-12"}`}
+        aria-labelledby="footer-heading"
+      >
         <h2 id="footer-heading" className="sr-only">
           Footer
         </h2>
@@ -180,6 +151,16 @@ const Footer = () => {
       </footer>
     </>
   )
+}
+
+Footer.propTypes = {
+  pad: PropTypes.bool.isRequired,
+  hide: PropTypes.bool.isRequired,
+}
+
+Footer.defaultProps = {
+  pad: false,
+  hide: false,
 }
 
 export default Footer
