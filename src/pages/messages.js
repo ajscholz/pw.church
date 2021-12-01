@@ -14,19 +14,49 @@ const MessagesPage = ({ data }) => {
   }
 
   return (
-    <div className="pt-32 ">
-      {currentMessages.map(({ message }) => (
-        <div key={message.contentful_id}>{message.title}</div>
-      ))}
-      {remainingMessages.length !== 0 && (
-        <button
-          className="px-6 py-3 bg-green-500 text-white"
-          onClick={() => handleClick()}
-        >
-          More messages
-        </button>
-      )}
-    </div>
+    <section className="flex justify-center">
+      <div className="px-8 max-w-7xl w-full">
+        <div className="pt-32 space-y-14">
+          <h1 className="text-4xl uppercase font-bold text-gray-800">
+            Sunday Messages
+          </h1>
+          {currentMessages.map(({ message }) => (
+            <div>
+              <div
+                key={message.contentful_id}
+                className="relative pt-16/9 border-4 border-gray-800 rounded-xl"
+              >
+                <div className="absolute inset-0 flex bg-gray-800 bg-opacity-10" />
+              </div>
+              <div>
+                <h2 className="mt-1 text-2xl text-gray-800 font-bold uppercase">
+                  {message.title}
+                </h2>
+                <h3 className="mt-1 text-lg text-gray-400 font-bold">
+                  {message.communicatorName}
+                </h3>
+                <h3 className="-mt-1 text-lg text-gray-400 font-bold">
+                  {message.messageDate}
+                </h3>
+                {/* <button className="mt-3 px-12 py-2 rounded-full bg-green-500 text-white text-lg hover:bg-green-700">
+                  Watch
+                </button> */}
+              </div>
+            </div>
+          ))}
+          {remainingMessages.length !== 0 && (
+            <div className="flex w-full justify-center">
+              <button
+                className="px-12 py-3 rounded-full text-xl bg-green-500 text-white"
+                onClick={() => handleClick()}
+              >
+                View More
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
   )
 }
 
@@ -42,6 +72,7 @@ export const data = graphql`
         message: node {
           contentful_id
           title
+          communicatorName
           messageDate(formatString: "MMM D, YYYY")
           slug
           messageSeries {
@@ -59,6 +90,7 @@ export const data = graphql`
         message: node {
           contentful_id
           title
+          communicatorName
           messageDate(formatString: "MMM D, YYYY")
           slug
           messageSeries {
