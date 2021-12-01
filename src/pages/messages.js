@@ -1,5 +1,8 @@
+//  TODO: Style for larger screen sizes, get images
+
 import React, { useState } from "react"
 import { graphql } from "gatsby"
+import ReactPlayer from "react-player"
 
 const MessagesPage = ({ data }) => {
   const firstMessages = data.firstMessages.all
@@ -26,6 +29,15 @@ const MessagesPage = ({ data }) => {
                 key={message.contentful_id}
                 className="relative pt-16/9 border-4 border-gray-800 rounded-xl"
               >
+                <ReactPlayer
+                  url={message.videoLink}
+                  light={true}
+                  controls={false}
+                  playIcon={<div />}
+                  width="100%"
+                  height="100%"
+                  style={{ position: "absolute", top: "0", overflow: "hidden" }}
+                />
                 <div className="absolute inset-0 flex bg-gray-800 bg-opacity-10" />
               </div>
               <div>
@@ -75,6 +87,7 @@ export const data = graphql`
           communicatorName
           messageDate(formatString: "MMM D, YYYY")
           slug
+          videoLink
           messageSeries {
             slug
           }
@@ -93,6 +106,7 @@ export const data = graphql`
           communicatorName
           messageDate(formatString: "MMM D, YYYY")
           slug
+          videoLink
           messageSeries {
             slug
           }
