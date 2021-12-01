@@ -1,3 +1,5 @@
+// TODO: Update logo on white background
+
 import React, { Fragment } from "react"
 import PropTypes from "prop-types"
 import { graphql, useStaticQuery } from "gatsby"
@@ -13,9 +15,7 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ")
 }
 
-const navClasses = "text-base text-white font-bold uppercase tracking-wide"
-
-const MainNav = ({ hide }) => {
+const MainNav = ({ hide, fullHero }) => {
   const data = useStaticQuery(graphql`
     query churchInfoQuery {
       logo: contentfulChurchInformation {
@@ -25,6 +25,10 @@ const MainNav = ({ hide }) => {
       }
     }
   `)
+
+  const navClasses = `text-base ${
+    fullHero ? "text-white" : "text-gray-700"
+  } font-bold uppercase tracking-wide`
 
   const logo = getImage(data.logo)
 
@@ -46,7 +50,11 @@ const MainNav = ({ hide }) => {
 
           {/* OPEN BUTTON */}
           <div className="-mr-2 -my-2 md:hidden">
-            <Popover.Button className="bg-transparent rounded-md p-2 inline-flex items-center justify-center text-white hover:text-gray-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500">
+            <Popover.Button
+              className={`bg-transparent rounded-md p-2 inline-flex items-center justify-center ${
+                fullHero ? "text-white" : "text-gray-700"
+              } hover:text-gray-400 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500`}
+            >
               <span className="sr-only">Open menu</span>
               <MenuIcon className="h-6 w-6" aria-hidden="true" />
             </Popover.Button>
@@ -61,7 +69,9 @@ const MainNav = ({ hide }) => {
                 className={classNames(
                   navClasses,
                   mainLinks.length - 1 === i
-                    ? "hidden md:block ml-8 whitespace-nowrap items-center justify-center px-8 py-2 border-2 border-white rounded-full hover:bg-green-500 hover:border-green-500"
+                    ? `hidden md:block ml-8 whitespace-nowrap items-center justify-center px-8 py-2 border-2 ${
+                        fullHero ? "border-white" : "border-gray-700"
+                      } rounded-full hover:bg-green-500 hover:border-green-500`
                     : ""
                 )}
               >
@@ -123,6 +133,7 @@ const MainNav = ({ hide }) => {
 
 MainNav.propTypes = {
   hide: PropTypes.bool.isRequired,
+  fullHero: PropTypes.bool.isRequired,
 }
 
 export default MainNav

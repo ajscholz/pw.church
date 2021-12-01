@@ -13,7 +13,7 @@
 exports.onCreatePage = ({ page, actions }) => {
   const { createPage } = actions
 
-  if (page.path.match(/\\/)) {
+  if (page.path === "/") {
     page.context.layout = "full-hero"
     createPage(page)
   } else if (page.path.match(/404/)) {

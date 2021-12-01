@@ -5,7 +5,7 @@ export const mainLinks = [
     name: "I'm New",
     href: "/new",
   },
-  { name: "Watch", href: "/watch" },
+  { name: "Watch", href: "/messages" },
   {
     name: "Give",
     href: "/give",

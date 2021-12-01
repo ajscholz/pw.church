@@ -8,13 +8,14 @@ import AnnouncementBanner from "./AnnouncementBanner"
 const Layout = ({ seo, children, pageContext }) => {
   const [show, setShow] = useState(false)
   const hideNav = pageContext.layout === "no-nav"
+  const fullHero = pageContext.layout === "full-hero"
 
   return (
     // <div className="flex flex-col min-h-screen bg-gray-50">
     <div>
       <Seo title={seo.title} description={seo.description} image={seo.image} />
       <div className="relative">
-        <MainNav hide={hideNav}>Header</MainNav>
+        <MainNav hide={hideNav} fullHero={fullHero} />
         <main className="lg:relative">{children}</main>
       </div>
       <Footer hide={hideNav} pad={show} />
