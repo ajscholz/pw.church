@@ -38,7 +38,7 @@ const AnnouncementBanner = ({ show, setShow }) => {
     return () => {
       clearTimeout(timer)
     }
-  }, [])
+  }, [edges.length, setShow])
 
   const { banner } = edges[0]
   const { longText, shortText, callToAction } = banner
