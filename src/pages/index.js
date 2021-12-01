@@ -2,7 +2,7 @@ import { graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import React from "react"
 import Link from "../components/Link"
-import ContentfulRichText from "../components/src/ContentfulRichText"
+import ContentfulRichText from "../components/ContentfulRichText"
 
 const IndexPage = ({ data }) => {
   const { page } = data
