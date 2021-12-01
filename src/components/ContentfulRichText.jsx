@@ -9,7 +9,6 @@ const Bold = ({ children, className }) => (
   </span>
 )
 const Paragraph = ({ children, className }) => {
-  console.log("paragraphClassNames", className)
   return (
     <p className={"".concat(className ? ` ${className}` : "")}>{children}</p>
   )

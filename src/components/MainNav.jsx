@@ -27,7 +27,6 @@ const MainNav = ({ props }) => {
   `)
 
   const logo = getImage(data.logo)
-  console.log("src", logo)
 
   return (
     <Popover className="absolute top-0 left-0 right-0 z-10 bg-transparent">
