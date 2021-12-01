@@ -1,5 +1,7 @@
 import React, { Fragment } from "react"
 import PropTypes from "prop-types"
+import { graphql, useStaticQuery } from "gatsby"
+import { getImage, GatsbyImage } from "gatsby-plugin-image"
 
 import { Popover, Transition } from "@headlessui/react"
 import { MenuIcon, XIcon } from "@heroicons/react/outline"
@@ -14,6 +16,19 @@ function classNames(...classes) {
 const navClasses = "text-base text-white font-bold uppercase tracking-wide"
 
 const MainNav = ({ props }) => {
+  const data = useStaticQuery(graphql`
+    query churchInfoQuery {
+      logo: contentfulChurchInformation {
+        childImageSharp: logo {
+          gatsbyImageData(height: 64)
+        }
+      }
+    }
+  `)
+
+  const logo = getImage(data.logo)
+  console.log("src", logo)
+
   return (
     <Popover className="absolute top-0 left-0 right-0 z-10 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -21,11 +36,11 @@ const MainNav = ({ props }) => {
           {/* LOGO */}
           <div className="flex justify-start lg:w-0 lg:flex-1">
             <Link href="/">
-              <span className="sr-only">Workflow</span>
-              <img
-                className="h-8 w-auto sm:h-10"
-                src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+              <span className="sr-only">Homepage</span>
+              <GatsbyImage
                 alt=""
+                image={logo}
+                imgClassName="h-8 w-auto sm:h-10"
               />
             </Link>
           </div>
