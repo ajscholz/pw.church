@@ -34,7 +34,7 @@ const IndexPage = ({ data }) => {
               <div className="rounded-md shadow">
                 <Link
                   href="/join"
-                  className="px-8 py-3 text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700 md:py-4 md:text-lg md:px-10"
+                  className="px-14 py-3 text-base font-medium rounded-full text-white bg-green-600 hover:bg-green-700 md:py-4 md:text-lg md:px-20"
                 >
                   Join Us Sunday
                 </Link>

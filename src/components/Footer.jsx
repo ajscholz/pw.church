@@ -3,21 +3,59 @@ import { footerLinks as navigation } from "../data/links"
 import Button from "./Button"
 import Typography from "./Typography"
 
+/*
+
+
+Bottom of the Page – FOOTER
+Location
+Address & Phone
+Services
+Times
+Pathway Community Church
+Sundays
+Church Overview
+Mission Statement
+Shortened statement of faith
+Governmental Structure video
+Contact Us
+If you have questions or comments we’re here to help
+Dropdown of all areas of ministry
+Email would go to all ministry appropriate areas
+Get Involved
+Connect Groups
+Join the Dream Team
+Care and Counseling
+Community Outreach
+Resources
+Help Me Understand
+Meyers Briggs
+Spiritual Gifts
+Enneagram
+
+
+*/
+
 const Footer = () => {
   return (
     <footer className="bg-white" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
-      <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+      <div className="mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="grid grid-cols-2 gap-8 xl:col-span-2">
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
                 <Typography type="h3" appearance="h6">
-                  Solutions
+                  Location
                 </Typography>
-                <ul className="mt-4 space-y-4">
+                <div className="mt-4 text-base text-gray-500">
+                  <div>113 Ellsworth Ave.</div>
+                  <div>Marietta Ohio 45750</div>
+                  <div className="mt-4">(740) 236-3888</div>
+                </div>
+
+                {/* <ul className="mt-4 space-y-4">
                   {navigation.solutions.map(item => (
                     <li key={item.name}>
                       <a
@@ -28,14 +66,14 @@ const Footer = () => {
                       </a>
                     </li>
                   ))}
-                </ul>
+                </ul> */}
               </div>
               <div className="mt-12 md:mt-0">
                 <Typography type="h3" appearance="h6">
-                  Support
+                  Pathway Community Church
                 </Typography>
                 <ul className="mt-4 space-y-4">
-                  {navigation.support.map(item => (
+                  {navigation.overview.map(item => (
                     <li key={item.name}>
                       <a
                         href={item.href}
@@ -51,11 +89,11 @@ const Footer = () => {
             <div className="md:grid md:grid-cols-2 md:gap-8">
               <div>
                 <Typography type="h3" appearance="h6">
-                  Company
+                  Get Involved
                 </Typography>
 
                 <ul className="mt-4 space-y-4">
-                  {navigation.company.map(item => (
+                  {navigation.involved.map(item => (
                     <li key={item.name}>
                       <a
                         href={item.href}
@@ -69,10 +107,10 @@ const Footer = () => {
               </div>
               <div className="mt-12 md:mt-0">
                 <Typography type="h3" appearance="h6">
-                  Legal
+                  Resources
                 </Typography>
                 <ul className="mt-4 space-y-4">
-                  {navigation.legal.map(item => (
+                  {navigation.resources.map(item => (
                     <li key={item.name}>
                       <a
                         href={item.href}
@@ -94,7 +132,7 @@ const Footer = () => {
               The latest news, articles, and resources, sent to your inbox
               weekly.
             </p>
-            <form className="mt-4 sm:flex sm:max-w-md">
+            <form className="mt-4 sm:max-w-md">
               <label htmlFor="email-address" className="sr-only">
                 Email address
               </label>
@@ -104,11 +142,13 @@ const Footer = () => {
                 id="email-address"
                 autoComplete="email"
                 required
-                className="appearance-none min-w-0 w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-4 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:placeholder-gray-400"
+                className="appearance-none min-w-0 w-full bg-white border border-gray-300 rounded-full shadow-sm py-2 px-4 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-green-500 focus:border-green-500 focus:placeholder-gray-400"
                 placeholder="Enter your email"
               />
-              <div className="mt-3 rounded-md sm:mt-0 sm:ml-3 sm:flex-shrink-0">
-                <Button>Subscribe</Button>
+              <div className="mt-3">
+                <button className="bg-green-600 flex items-center justify-center border border-transparent rounded-full py-2 px-8 text-base font-medium text-white hover:bg-green-700 focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                  Subscribe
+                </button>
               </div>
             </form>
           </div>
