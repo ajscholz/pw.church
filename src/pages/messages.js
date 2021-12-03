@@ -5,6 +5,8 @@ TODO: Create way to have current view (message or series) persist between page c
       the state is not retained, so the view resets to Messages. 
       This is a really crappy UX because if I was browsing series I have to restart that process.
 
+TODO: Fix layout of series' in production. In development they're fine.
+
 */
 
 import React, { useState } from "react"
