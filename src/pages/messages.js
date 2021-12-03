@@ -1,11 +1,14 @@
 import React, { useState } from "react"
 import { graphql } from "gatsby"
 import ReactPlayer from "react-player"
+import Link from "../components/Link"
 
 const MessagesPage = ({ data }) => {
   const firstMessages = data.firstMessages.all
   const remainingMessages = data.remainingMessages.all
   const [currentMessages, setCurrentMessages] = useState(firstMessages)
+
+  const { series } = data
 
   // "Add" 5 more messages to the page
   const handleClick = () => {
@@ -21,22 +24,36 @@ const MessagesPage = ({ data }) => {
           <h1 className="text-4xl uppercase font-bold text-gray-800">
             Sunday Messages
           </h1>
+
+          {series.all.map(ser => {
+            console.log("ser", ser)
+            return (
+              <Link href={ser.series.pagePath}>{ser.series.seriesTitle}</Link>
+            )
+          })}
+
           {currentMessages.map(({ message }) => (
             <div
               key={message.contentful_id}
               className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6"
             >
               <div className="relative pt-16/9 border-4 border-gray-800 rounded-xl">
-                <ReactPlayer
-                  url={message.videoLink}
-                  light={true}
-                  controls={false}
-                  playIcon={<div />}
-                  width="100%"
-                  height="100%"
-                  style={{ position: "absolute", top: "0", overflow: "hidden" }}
-                />
-                <div className="absolute inset-0 flex bg-gray-800 bg-opacity-10" />
+                <Link href={message.pagePath}>
+                  <ReactPlayer
+                    url={message.videoLink}
+                    light={true}
+                    controls={false}
+                    playIcon={<div />}
+                    width="100%"
+                    height="100%"
+                    style={{
+                      position: "absolute",
+                      top: "0",
+                      overflow: "hidden",
+                    }}
+                  />
+                  <div className="absolute inset-0 flex bg-gray-800 bg-opacity-10" />
+                </Link>
               </div>
               <div>
                 <h2 className="text-2xl text-gray-800 font-bold uppercase">
@@ -82,6 +99,7 @@ export const data = graphql`
         message: node {
           contentful_id
           title
+          pagePath
           communicatorName
           messageDate(formatString: "MMM D, YYYY")
           slug
@@ -104,10 +122,20 @@ export const data = graphql`
           communicatorName
           messageDate(formatString: "MMM D, YYYY")
           slug
+          pagePath
           videoLink
           messageSeries {
             slug
           }
+        }
+      }
+    }
+    series: allContentfulMessageSeries {
+      all: edges {
+        series: node {
+          contentful_id
+          seriesTitle
+          pagePath
         }
       }
     }

@@ -1,3 +1,5 @@
+// TODO: Update SEO – this doesn't work. The seo component needs to be injected in each page
+
 import React, { useState } from "react"
 import PropTypes from "prop-types"
 import Seo from "./Seo"

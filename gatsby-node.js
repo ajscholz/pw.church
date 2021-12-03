@@ -1,5 +1,4 @@
 const path = require("path")
-const { createFilePath } = require("gatsby-source-filesystem")
 
 // USING DSG DEMO
 // exports.createPages = async ({ actions }) => {
@@ -99,7 +98,6 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
       fields: {
         seriesTitle: "String",
         length: "Int",
-        message: "[ContentfulMessage]",
         slug: "String",
         pagePath: "String",
       },
@@ -126,7 +124,7 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
 }
 
 // CREATE PAGES
-exports.createPages = ({ graphql, actions, getNode, getNodesByType }) => {
+exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions
   const messagePageTemplate = path.resolve(
     "./src/templates/MessageTemplate.jsx"
@@ -165,7 +163,7 @@ exports.createPages = ({ graphql, actions, getNode, getNodesByType }) => {
       createPage({
         path: series.pagePath,
         component: seriesPageTemplate,
-        context: { slug: series.slug },
+        context: { slug: series.slug, layout: "full-hero" },
       })
     })
   })
