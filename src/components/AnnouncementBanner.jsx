@@ -1,3 +1,35 @@
+/*
+
+TODO: Add sort by updatedAt field back into graphql query. This was created so that when there are multiple
+      announcement banners they appear based on the newest one that has been creatd. This is especially important
+      for preview, so that content creators will see the banner they're working on. However it's breaking the build
+      in Gatsby Cloud. It works fine in development and with local Gatsby Build, but in Cloud it's failing.
+
+      Here's the original graphql auery: 
+
+      const data = useStaticQuery(graphql`
+        {
+          allContentfulAnnouncementBanner(
+            sort: { fields: updatedAt, order: DESC }
+            limit: 1
+          ) {
+            edges {
+              banner: node {
+                contentful_id
+                longText
+                shortText
+                callToAction {
+                  text
+                  url
+                }
+              }
+            }
+          }
+        }
+      `)
+
+*/
+
 import React, { useEffect } from "react"
 import PropTypes from "prop-types"
 import { graphql, useStaticQuery } from "gatsby"
@@ -9,10 +41,7 @@ import Link from "./Link"
 const AnnouncementBanner = ({ show, setShow }) => {
   const data = useStaticQuery(graphql`
     {
-      allContentfulAnnouncementBanner(
-        sort: { fields: updatedAt, order: DESC }
-        limit: 1
-      ) {
+      allContentfulAnnouncementBanner {
         edges {
           banner: node {
             contentful_id
