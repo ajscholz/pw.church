@@ -5,6 +5,8 @@ TODO: Add sort by updatedAt field back into graphql query. This was created so t
       for preview, so that content creators will see the banner they're working on. However it's breaking the build
       in Gatsby Cloud. It works fine in development and with local Gatsby Build, but in Cloud it's failing.
 
+      It's also not connecting to the Call to Action for some reason
+
       Here's the original graphql auery: 
 
       const data = useStaticQuery(graphql`
@@ -47,10 +49,10 @@ const AnnouncementBanner = ({ show, setShow }) => {
             contentful_id
             longText
             shortText
-            callToAction {
-              text
-              url
-            }
+            # callToAction {
+            #   text
+            #   url
+            # }
           }
         }
       }
@@ -102,14 +104,14 @@ const AnnouncementBanner = ({ show, setShow }) => {
                   <span className="hidden md:inline">{longText}</span>
                 </p>
               </div>
-              <div className="order-2 flex-shrink-0">
+              {/* <div className="order-2 flex-shrink-0">
                 <Link
                   href={callToAction.url}
                   className="flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-green-600 bg-white hover:bg-green-50"
                 >
                   {callToAction.text}
                 </Link>
-              </div>
+              </div> */}
               <div className="order-2 flex-shrink-0 sm:order-3 sm:ml-3">
                 <button
                   type="button"
