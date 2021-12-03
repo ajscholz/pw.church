@@ -1,11 +1,13 @@
 // TODO: Update SEO – this doesn't work. The seo component needs to be injected in each page
 
+// TODO: Re-enable announcement banner once I debug it
+
 import React, { useState } from "react"
 import PropTypes from "prop-types"
 import Seo from "./Seo"
 import Footer from "./Footer"
 import MainNav from "./MainNav"
-import AnnouncementBanner from "./AnnouncementBanner"
+// import AnnouncementBanner from "./AnnouncementBanner"
 
 const Layout = ({ seo, children, pageContext }) => {
   const [show, setShow] = useState(false)
@@ -21,7 +23,7 @@ const Layout = ({ seo, children, pageContext }) => {
         <main className="lg:relative">{children}</main>
       </div>
       <Footer hide={hideNav} pad={show} />
-      <AnnouncementBanner show={show} setShow={setShow} />
+      {/* <AnnouncementBanner show={show} setShow={setShow} /> */}
     </div>
   )
 }
