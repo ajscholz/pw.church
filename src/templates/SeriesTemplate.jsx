@@ -37,15 +37,15 @@ const SeriesTemplate = ({ data }) => {
       <div className="flex justify-center pt-16 px-4 -mb-6 md:pt-16 md:px-12">
         <div className="w-full max-w-screen-2xl grid grid-cols-1 lg:grid-cols-2 place-content-end content-end gap-20">
           {/* ABOUT THIS SERIES */}
-          <div className="space-y-6 order-1">
+          <div className="space-y-4 order-1">
             <h2 className="text-3xl text-gray-800 font-bold md:text-3xl">
               About This Series
             </h2>
             <div>
-              <h5 className="text-gray-500 uppercase underline font-bold tracking-wider">{`Date${
+              <h5 className="text-gray-400 text-lg uppercase underline font-bold tracking-wider">{`Date${
                 series.length > 1 ? "s" : ""
               }`}</h5>
-              <p>
+              <p className="text-lg font-gray-700">
                 {series.length === 1
                   ? series.startDate
                   : series.startMonth === series.endMonth
@@ -54,16 +54,20 @@ const SeriesTemplate = ({ data }) => {
               </p>
             </div>
             <div>
-              <h5 className="text-gray-500 uppercase underline font-bold tracking-wider">
+              <h5 className="text-gray-400 text-lg uppercase underline font-bold tracking-wider">
                 Length
               </h5>
-              <p>{`${series.length} Week${series.length > 1 ? "s" : ""}`}</p>
+              <p className="text-lg font-gray-700">{`${series.length} Week${
+                series.length > 1 ? "s" : ""
+              }`}</p>
             </div>
             <div>
-              <h5 className="text-gray-500 uppercase underline font-bold tracking-wider">
+              <h5 className="text-gray-400 text-lg uppercase underline font-bold tracking-wider">
                 Overview
               </h5>
-              <p>{series.seriesDescription.seriesDescription}</p>
+              <p className="text-lg font-gray-700">
+                {series.seriesDescription.seriesDescription}
+              </p>
             </div>
           </div>
 

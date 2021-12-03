@@ -10,7 +10,7 @@ const MessageCard = ({ message }) => {
       key={message.contentful_id}
       className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6"
     >
-      <div className="relative pt-16/9 border-4 border-gray-800 rounded-xl">
+      <div className="relative pt-16/9 rounded-xl overflow-hidden">
         <Link href={message.pagePath}>
           <ReactPlayer
             url={message.videoLink}
