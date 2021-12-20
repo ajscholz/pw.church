@@ -1,3 +1,5 @@
+// TODO: Better accessibility on links
+
 import React, { Fragment } from "react"
 import PropTypes from "prop-types"
 import { graphql, useStaticQuery } from "gatsby"
@@ -8,10 +10,7 @@ import { MenuIcon, XIcon } from "@heroicons/react/outline"
 
 import { mainLinks } from "../data/links"
 import Link from "./Link"
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ")
-}
+import classNames from "classnames"
 
 const MainNav = ({ hide, fullHero }) => {
   const data = useStaticQuery(graphql`
@@ -30,8 +29,10 @@ const MainNav = ({ hide, fullHero }) => {
   `)
 
   const navClasses = `text-base ${
-    fullHero ? "text-white" : "text-gray-700"
-  } font-bold uppercase tracking-wide`
+    fullHero
+      ? "text-white hover:not-last-of-type:text-green-300"
+      : "not-last-of-type:text-gray-700 hover:last-of-type:text-green-100 hover:not-last-of-type:text-green-800"
+  } font-bold uppercase tracking-wide no-underline underline-offset-2 decoration-2 hover:not-last-of-type:underline`
 
   const logo = getImage(data.lightLogo)
   const darkLogo = getImage(data.darkLogo)
@@ -70,14 +71,13 @@ const MainNav = ({ hide, fullHero }) => {
               <Link
                 key={link.name}
                 href={link.href}
-                className={classNames(
+                className={[
                   navClasses,
-                  mainLinks.length - 1 === i
-                    ? `hidden md:block ml-8 whitespace-nowrap items-center justify-center px-8 py-2 border-2 ${
-                        fullHero ? "border-white" : "border-gray-700"
-                      } rounded-full hover:bg-green-500 hover:border-green-500`
-                    : ""
-                )}
+                  "last-of-type:hidden last-of-type:md:block last-of-type:ml-8 last-of-type:whitespace-nowrap last-of-type:items-center last-of-type:justify-center last-of-type:px-8 last-of-type:py-2 last-of-type:border-2 last-of-type:rounded-full last-of-type:hover:bg-green-500 last-of-type:hover:border-green-500 last-of-type:underline-none last-of-type:hover:underline-none",
+                  fullHero
+                    ? "last-of-type:border-white hover:last-of-type:white"
+                    : "last-of-type:border-black hover:last-of-type:text-green-50",
+                ]}
               >
                 {link.name}
               </Link>
