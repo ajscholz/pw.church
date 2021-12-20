@@ -31,7 +31,7 @@ const IndexPage = ({ data }) => {
         <div className="absolute inset-0 bg-gray-900 bg-opacity-50 mix-blend-multiply" />
         <div className="absolute inset-0 mx-auto max-w-7xl w-full pt-36 text-left py-36">
           <div className="px-4 sm:px-6 xl:pr-16">
-            <h1 className="text-4xl tracking-tight font-extrabold text-white sm:text-5xl lg:text-6xl">
+            <h1 className="text-4xl tracking-tight font-extrabold text-white sm:text-5xl lg:text-7xl ">
               {banner.heading}
             </h1>
             <p className="mt-3 max-w-md text-lg text-gray-200 sm:text-xl md:mt-5 md:max-w-3xl">

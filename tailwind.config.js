@@ -2,11 +2,12 @@ const defaultTheme = require("tailwindcss/defaultTheme")
 const colors = require("tailwindcss/colors")
 
 module.exports = {
-  purge: ["./src/**/*.{js,jsx,ts,tsx}"],
-  darkMode: false, // or 'media' or 'class'
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  media: false,
   theme: {
     colors: {
       ...colors,
+      current: "currentColor",
       transparent: "transparent",
       green: {
         50: "#fafcf6",
@@ -34,9 +35,6 @@ module.exports = {
         128: "32rem",
       },
     },
-  },
-  variants: {
-    extend: {},
   },
   plugins: [
     require("@tailwindcss/forms"),
