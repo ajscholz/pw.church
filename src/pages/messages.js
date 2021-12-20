@@ -3,8 +3,6 @@
 TODO: Fix weird scroll position behavior – it's retaining state now but scroll position is odd.
       I suspect this has something to do w/ the useLayoutEffect call.
 
-TODO: Fix layout of series' in production. In development they're fine.
-
 */
 
 import React, { useState, useLayoutEffect } from "react"
@@ -112,29 +110,33 @@ const MessagesPage = ({ data }) => {
           </div>
 
           {state.inView === "Messages"
-            ? state.messages.shown.map(({ message }) => (
+            ? // MAP OVER MESSAGES
+              state.messages.shown.map(({ message }) => (
                 <div
                   key={message.contentful_id}
                   className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6"
                 >
-                  <div className="relative pt-16/9 rounded-xl overflow-hidden">
-                    <Link href={message.pagePath}>
-                      <ReactPlayer
-                        url={message.videoLink}
-                        light={true}
-                        controls={false}
-                        playIcon={<div />}
-                        width="100%"
-                        height="100%"
-                        style={{
-                          position: "absolute",
-                          top: "0",
-                          overflow: "hidden",
-                        }}
-                      />
-                      <div className="absolute inset-0 flex bg-gray-800 bg-opacity-10" />
-                    </Link>
-                  </div>
+                  {/* <div className="rounded-xl overflow-hidden aspect-video w-full flex"> */}
+                  <Link
+                    href={message.pagePath}
+                    className="relative flex rounded-xl h-full w-full aspect-video overflow-hidden"
+                  >
+                    <ReactPlayer
+                      url={message.videoLink}
+                      light={true}
+                      controls={false}
+                      playIcon={<div />}
+                      width="100%"
+                      height="100%"
+                      style={{
+                        position: "absolute",
+                        top: "0",
+                        overflow: "hidden",
+                      }}
+                    />
+                    <div className="w-full inset-0 flex bg-gray-800/10" />
+                  </Link>
+                  {/* </div> */}
                   <div>
                     <h2 className="text-2xl text-gray-800 font-bold uppercase">
                       {message.title}
@@ -148,21 +150,23 @@ const MessagesPage = ({ data }) => {
                   </div>
                 </div>
               ))
-            : state.series.shown.map(({ series }) => (
+            : // MAP OVER SERIES
+              state.series.shown.map(({ series }) => (
                 <div
                   key={series.contentful_id}
                   className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6"
                 >
-                  <div className="relative pt-16/9 rounded-xl overflow-hidden">
-                    <Link href={series.pagePath}>
-                      <GatsbyImage
-                        image={series.seriesGraphic.gatsbyImageData}
-                        className="absolute inset-0 w-full h-full object-cover"
-                        alt={`${series.seriesTitle} graphic`}
-                      />
-                      <div className="absolute inset-0 flex bg-gray-800 bg-opacity-10" />
-                    </Link>
-                  </div>
+                  <Link
+                    href={series.pagePath}
+                    className="relative flex rounded-xl h-full w-full aspect-video overflow-hidden"
+                  >
+                    <GatsbyImage
+                      image={series.seriesGraphic.gatsbyImageData}
+                      className="absolute inset-0 w-full h-full object-cover"
+                      alt={`${series.seriesTitle} graphic`}
+                    />
+                    <div className="absolute inset-0 flex bg-gray-800 bg-opacity-10" />
+                  </Link>
                   <div>
                     <h2 className="text-2xl text-gray-800 font-bold uppercase">
                       {series.seriesTitle}
