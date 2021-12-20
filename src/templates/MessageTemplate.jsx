@@ -1,7 +1,7 @@
 import React from "react"
 
 const MessageTemplate = props => {
-  return <div>hello from message</div>
+  return <div className="mt-32">hello from message</div>
 }
 
 export default MessageTemplate

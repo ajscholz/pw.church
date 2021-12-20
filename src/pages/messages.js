@@ -1,42 +1,60 @@
 /* 
 
-TODO: Create way to have current view (message or series) persist between page changes.
-      Currently if I navigate to a series page then just use the back button
-      the state is not retained, so the view resets to Messages. 
-      This is a really crappy UX because if I was browsing series I have to restart that process.
+TODO: Fix weird scroll position behavior – it's retaining state now but scroll position is odd.
+      I suspect this has something to do w/ the useLayoutEffect call.
 
 TODO: Fix layout of series' in production. In development they're fine.
 
 */
 
-import React, { useState } from "react"
+import React, { useState, useLayoutEffect } from "react"
 import { graphql } from "gatsby"
 import ReactPlayer from "react-player"
 import Link from "../components/Link"
 import { GatsbyImage } from "gatsby-plugin-image"
 
 const MessagesPage = ({ data }) => {
-  const firstMessages = data.firstMessages.all
-  const remainingMessages = data.remainingMessages.all
-  const firstSeries = data.firstSeries.all
-  const remainingSeries = data.remainingSeries.all
-  const [state, setState] = useState({
-    inView: "Messages",
-    hidden: "Series",
-    messages: { shown: [...firstMessages], hidden: [...remainingMessages] },
-    series: { shown: [...firstSeries], hidden: [...remainingSeries] },
-  })
+  const [state, setState] = useState(null)
+
+  // set the look of the
+  useLayoutEffect(() => {
+    const { view } = window.sessionStorage
+
+    if (view === undefined) {
+      setState({
+        inView: "Messages",
+        hidden: "Series",
+        messages: {
+          shown: [...data.firstMessages.all],
+          hidden: [...data.remainingMessages.all],
+        },
+        series: {
+          shown: [...data.firstSeries.all],
+          hidden: [...data.remainingSeries.all],
+        },
+      })
+    } else {
+      setState(JSON.parse(view))
+    }
+  }, [data])
+
+  // update both the state and the sessionStorage object (to retain view on route changes)
+  const updateView = data => {
+    if (typeof window !== undefined)
+      window.sessionStorage.setItem("view", JSON.stringify(data))
+    setState(data)
+  }
 
   // "Add" 5 more messages to the page
   const switchTypes = () => {
     if (state.inView === "Messages") {
-      setState({
+      updateView({
         ...state,
         inView: "Series",
         hidden: "Messages",
       })
     } else if (state.inView === "Series") {
-      setState({
+      updateView({
         ...state,
         inView: "Messages",
         hidden: "Series",
@@ -50,7 +68,7 @@ const MessagesPage = ({ data }) => {
     // concat doesn't modify original arrays
     const newShown = state.messages.shown.concat(removed)
 
-    setState({
+    updateView({
       ...state,
       messages: {
         shown: newShown,
@@ -65,7 +83,7 @@ const MessagesPage = ({ data }) => {
     // concat doesn't modify original arrays
     const newShown = state.series.shown.concat(removed)
 
-    setState({
+    updateView({
       ...state,
       series: {
         shown: newShown,
@@ -74,7 +92,7 @@ const MessagesPage = ({ data }) => {
     })
   }
 
-  return (
+  return state === null ? null : (
     <section className="flex justify-center">
       <div className="px-8 max-w-7xl w-full">
         <div className="pt-32 space-y-14">
