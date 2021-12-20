@@ -1,5 +1,3 @@
-// TODO: Update logo on white background
-
 import React, { Fragment } from "react"
 import PropTypes from "prop-types"
 import { graphql, useStaticQuery } from "gatsby"
@@ -35,7 +33,7 @@ const MainNav = ({ hide, fullHero }) => {
     fullHero ? "text-white" : "text-gray-700"
   } font-bold uppercase tracking-wide`
 
-  const logo = getImage(data.logo)
+  const logo = getImage(data.lightLogo)
   const darkLogo = getImage(data.darkLogo)
 
   return hide ? null : (

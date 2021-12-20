@@ -84,7 +84,7 @@ const SeriesTemplate = ({ data }) => {
               Messages In This Series
             </h2>
             {series.messages.map(message => (
-              <MessageCard message={message} />
+              <MessageCard message={message} key={message.contentful_id} />
             ))}
           </div>
         </div>

@@ -6,10 +6,7 @@ import { graphql } from "gatsby"
 
 const MessageCard = ({ message }) => {
   return (
-    <div
-      key={message.contentful_id}
-      className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6"
-    >
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6">
       <div className="relative pt-16/9 rounded-xl overflow-hidden">
         <Link href={message.pagePath}>
           <ReactPlayer
