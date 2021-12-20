@@ -1,5 +1,9 @@
 // TODO: Add share content section back in. It wasn't laying out properly
 
+// TODO: Add SEO
+
+// TODO: Complete "Share This Series" section
+
 import React from "react"
 import { graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
@@ -69,14 +73,14 @@ const SeriesTemplate = ({ data }) => {
                 {series.seriesDescription.seriesDescription}
               </p>
             </div>
-          </div>
 
-          {/* SHARE THIS SERIES */}
-          {/* <div className="space-y-6 order-3 ">
-            <h2 className="text-3xl text-gray-800 font-bold md:text-3xl">
-              Share This Series
-            </h2>
-          </div> */}
+            {/* SHARE THIS SERIES */}
+            <div className="space-y-6 ">
+              <h2 className="mt-10 text-3xl text-gray-800 font-bold md:text-3xl">
+                Share This Series
+              </h2>
+            </div>
+          </div>
 
           {/* MESSAGES IN SERIES */}
           <div className="space-y-6 lg:mt-0 row-span-2 order-2 ">
@@ -117,14 +121,14 @@ export const query = graphql`
   }
 `
 
-const Section = ({ children, ...rest }) => (
-  <section className="pt-16 px-4 -mb-6 md:pt-16 md:px-12" {...rest}>
-    {children}
-  </section>
-)
+// const Section = ({ children, ...rest }) => (
+//   <section className="pt-16 px-4 -mb-6 md:pt-16 md:px-12" {...rest}>
+//     {children}
+//   </section>
+// )
 
-const H1 = ({ children, ...rest }) => (
-  <h1 className="text-xl text-gray-700 font-bold md:text-2xl" {...rest}>
-    {children}
-  </h1>
-)
+// const H1 = ({ children, ...rest }) => (
+//   <h1 className="text-xl text-gray-700 font-bold md:text-2xl" {...rest}>
+//     {children}
+//   </h1>
+// )
