@@ -18,8 +18,13 @@ function classNames(...classes) {
 const MainNav = ({ hide, fullHero }) => {
   const data = useStaticQuery(graphql`
     query churchInfoQuery {
-      logo: contentfulChurchInformation {
+      lightLogo: contentfulChurchInformation {
         childImageSharp: logo {
+          gatsbyImageData(height: 64)
+        }
+      }
+      darkLogo: contentfulChurchInformation {
+        childImageSharp: darkLogo {
           gatsbyImageData(height: 64)
         }
       }
@@ -31,6 +36,7 @@ const MainNav = ({ hide, fullHero }) => {
   } font-bold uppercase tracking-wide`
 
   const logo = getImage(data.logo)
+  const darkLogo = getImage(data.darkLogo)
 
   return hide ? null : (
     <Popover className="absolute top-0 left-0 right-0 z-10 bg-transparent">
@@ -41,8 +47,8 @@ const MainNav = ({ hide, fullHero }) => {
             <Link href="/">
               <span className="sr-only">Homepage</span>
               <GatsbyImage
-                alt=""
-                image={logo}
+                alt="Pathway Community Church Homepage"
+                image={fullHero ? logo : darkLogo}
                 imgClassName="h-8 w-auto sm:h-10"
               />
             </Link>
