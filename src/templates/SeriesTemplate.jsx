@@ -4,6 +4,8 @@
 
 // TODO: Complete "Share This Series" section
 
+// TODO: Fix bug where date doesn't show if series is only 1 week (example: Fishing for People series)
+
 import React from "react"
 import { graphql } from "gatsby"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"

@@ -137,6 +137,9 @@ exports.createPages = ({ graphql, actions }) => {
         messages: nodes {
           slug
           pagePath
+          messageSeries {
+            contentful_id
+          }
         }
       }
       allContentfulMessageSeries {
@@ -155,7 +158,10 @@ exports.createPages = ({ graphql, actions }) => {
       createPage({
         path: message.pagePath,
         component: messagePageTemplate,
-        context: { slug: message.slug },
+        context: {
+          slug: message.slug,
+          seriesId: message.messageSeries.contentful_id,
+        },
       })
     })
 
