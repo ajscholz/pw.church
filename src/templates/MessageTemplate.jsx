@@ -110,8 +110,8 @@ const ReactPlayer = ({ url }) => {
       }}
       playIcon={
         <div className="h-full w-full flex justify-end" alt="Play video">
-          <div className="h-full w-1/3 bg-green-500 -skew-x-12 translate-x-12 lg:translate-x-24 flex items-center">
-            <PlayIcon className="h-24 text-white skew-x-12 bg-green-500 rounded-full translate-y-1 -translate-x-10 p-2" />
+          <div className="h-full w-1/3 bg-green-500 -skew-x-12 translate-x-12 md:translate-x-28 lg:translate-x-20 flex items-center">
+            <PlayIcon className="h-24 text-white skew-x-12 bg-green-500 rounded-full translate-y-1 -translate-x-10 p-2 stroke-1!" />
           </div>
         </div>
       }
