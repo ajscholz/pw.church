@@ -1,7 +1,11 @@
 /** TODO: Help PW figure out full service video link codes.
           Article here: https://help.ekklesia360.com/article/using-boxcast-embed-codes/
 
-    TODO: When I click play on the video it just loads YouTube, which is a crap UX.
+    TODO: Style "more from this series" seciton better
+
+    TODO: Style metadata better
+
+    TODO: Create "Share this message"
 */
 
 import React from "react"
