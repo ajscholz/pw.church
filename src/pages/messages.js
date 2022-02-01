@@ -220,6 +220,7 @@ export const data = graphql`
           title
           pagePath
           communicatorName
+          messageMonth: messageDate(formatString: "")
           messageDate(formatString: "MMM D, YYYY")
           slug
           videoLink

@@ -54,7 +54,7 @@ export const query = graphql`
     contentful_id
     title
     communicatorName
-    messageDate
+    messageDate(formatString: "MMM D, YYYY")
     pagePath
     videoLink
   }

@@ -45,15 +45,17 @@ const MessageTemplate = ({ data }) => {
         <div className="my-12 w-4/5 h-px bg-gray-300 mx-auto" />
 
         {/* MESSAGES IN SERIES */}
-        <div className="space-y-6 row-span-2 order-2 ">
+        <div className="space-y-6 row-span-2 order-2">
           <h2 className="text-3xl text-gray-600 font-bold md:text-3xl">
             More From This Series
           </h2>
-          {moreMessages.all.map(message => (
-            <div key={message.contentful_id}>
-              <MessageCard message={message} />
-            </div>
-          ))}
+          <div className="space-y-6 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-6">
+            {moreMessages.all.map(message => (
+              <div key={message.contentful_id}>
+                <MessageCard message={message} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -73,7 +75,7 @@ export const data = graphql`
       videoLink
       slug
       pagePath
-      messageDate
+      messageDate(formatString: "MMM D, YYYY")
       messageSeries {
         seriesTitle
         pagePath
