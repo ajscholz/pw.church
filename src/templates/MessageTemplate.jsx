@@ -12,7 +12,9 @@ import React from "react"
 import { graphql } from "gatsby"
 import DefaultReactPlayer from "react-player"
 import MessageCard from "../components/MessageCard"
-import { PlayIcon } from "@heroicons/react/outline"
+import Button from "../components/Button"
+import { PlayIcon, ShareIcon } from "@heroicons/react/outline"
+import SocialSharingDialog from "../components/SocialSharingDialog"
 
 const MessageTemplate = ({ data }) => {
   const { message, moreMessages } = data
@@ -37,8 +39,8 @@ const MessageTemplate = ({ data }) => {
           <ReactPlayer url={message.fullServiceVideoLink} />
         <button>Watch Message Only</button> */}
           </div>
-          <div className="col-span-5">
-            <h2>Share This Message</h2>
+          <div className="col-span-5 flex justify-start">
+            <SocialSharingDialog link={message.pagePath} />
           </div>
         </div>
 

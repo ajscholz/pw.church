@@ -2,6 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-svg path {
+/* svg path {
   @apply stroke-1;
-}
+} */
